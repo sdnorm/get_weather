@@ -1,8 +1,12 @@
 <div class="relative w-screen h-screen">
   <div class="absolute inset-0 flex items-center justify-center">
     <div class="w-full max-w-md">
-      <%= render 'input_field' %>
-      <%= render 'weather_component' %>
+      <%= render "weather_forecasts/input_field" %>
+      <% if @weather_data_cached %>
+        <%= render partial: "weather_forecasts/current" %>
+      <% else %>
+        <%= render partial: "weather_forecasts/placeholder" %>
+      <% end %>
     </div>
   </div>
 </div>

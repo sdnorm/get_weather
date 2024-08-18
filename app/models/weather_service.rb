@@ -1,0 +1,2 @@
+class WeatherService < ApplicationRecord
+end
