@@ -1,6 +1,27 @@
 <%= turbo_frame_tag :weather_forecast_extended do %>
-  <div>
-    <h1 class="font-bold text-4xl">WeatherForecasts#extended</h1>
-    <p>Find me in app/views/weather_forecasts/extended.html.erb</p>
+  <div class="flex items-center justify-center">
+    <div class="flex flex-col bg-white rounded p-4 w-full max-w-lg">
+      <div class="font-bold text-xl">Sydney - Extended Forecast</div>
+      <div class="text-sm text-gray-500">Thursday 10 May 2020</div>
+      
+      <!-- Extended Forecast for Multiple Days -->
+      <div class="mt-6">
+        <% 5.times do |i| %>
+          <div class="flex flex-row items-center justify-between py-2 border-b border-gray-200">
+            <div class="text-sm text-gray-500">May <%= 10 + 1 + i %></div>
+            <div class="text-sm text-gray-500 flex items-center">
+              <span>12%</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="ml-1 w-4 h-4"><path d="M9 18.2c0-2.8 3-5.2 3-5.2s3 2.4 3 5.2c0 2-1.125 2.8-3 2.8s-3-.8-3-2.8zM6 3S3 5.4 3 8.2c0 2 1.125 2.8 3 2.8s3-.8 3-2.8C9 5.4 6 3 6 3zm12 0s-3 2.4-3 5.2c0 2 1.125 2.8 3 2.8s3-.8 3-2.8C21 5.4 18 3 18 3z"/></svg>
+            </div>
+            <div class="text-sm text-gray-500">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" />
+              </svg>
+            </div>
+            <div class="text-sm text-gray-500">18° / 32°</div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>
