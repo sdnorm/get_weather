@@ -134,6 +134,41 @@
           null
         ]
       },
+      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/controllers/pages_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/helpers/pages_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/helpers/weather_forecasts_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/models/weather_service.rb": {
         "lines": [
           1,
@@ -237,44 +272,9 @@
           null,
           null
         ]
-      },
-      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/controllers/pages_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null
-        ]
-      },
-      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/helpers/pages_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/Users/sdnorm/projects/apple-dev-job/coding-challenge/weather/app/helpers/weather_forecasts_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
       }
     },
-    "timestamp": 1724050775
+    "timestamp": 1724051007
   },
   "Unit Tests": {
     "coverage": {
