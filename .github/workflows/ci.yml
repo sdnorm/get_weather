@@ -85,7 +85,8 @@ jobs:
           pg_isready
 
       - name: Create test database
-        run: psql -c 'create database weather_test;' -U postgres
+        run: |
+          PGPASSWORD=${{ env.POSTGRES_PASSWORD }} psql -h localhost -U postgres -c 'CREATE DATABASE weather_test;'
 
       - name: Run tests
         env:
