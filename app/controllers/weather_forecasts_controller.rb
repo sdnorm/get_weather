@@ -3,7 +3,6 @@ class WeatherForecastsController < ApplicationController
     @zip_code = params[:zip_code]
     cache_key = "todays_weather_#{@zip_code}"
     @is_cached = Rails.cache.exist?(cache_key)
-
     @todays_weather = Rails.cache.fetch(cache_key, expires_in: 30.minutes) do
       WeatherService.new(@zip_code, "current").get_forecast
     end
@@ -21,6 +20,7 @@ class WeatherForecastsController < ApplicationController
     @extended_forecast = Rails.cache.fetch(cache_key, expires_in: 30.minutes) do
       WeatherService.new(@zip_code, "extended").get_forecast
     end
+
     respond_to do |format|
       format.html
       format.turbo_stream { render "weather_forecasts/extended" }

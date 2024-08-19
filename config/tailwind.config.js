@@ -18,5 +18,8 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-  ]
+  ],
+  colors: {
+    'red-600': '#FF0000',
+  }
 }
