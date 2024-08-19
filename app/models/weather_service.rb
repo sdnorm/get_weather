@@ -84,7 +84,7 @@ class WeatherService
     return { error: data[:error] } if data.is_a?(Hash) && data.key?(:error)
 
     daily_data = data.dig("timelines", "daily")
-    
+
     if daily_data.nil? || daily_data.empty?
       return { error: "Unable to retrieve extended forecast. Please check your zip code and try again." }
     end
