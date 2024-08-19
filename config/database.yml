@@ -20,7 +20,7 @@ test:
   <<: *default
   host: localhost
   username: postgres
-  password: password
+  password: postgres
   database: weather_test
 
 
