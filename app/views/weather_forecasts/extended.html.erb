@@ -1,16 +1,20 @@
 <%= turbo_frame_tag :weather_forecast_extended do %>
-  <div class="flex items-center justify-center <%= 'border-4 border-red-600' if @is_cached %>">
-    <div class="flex flex-col bg-white rounded p-4 w-full max-w-lg">
-      <div class="mt-6">
-        <% @extended_forecast.each do |day| %>
-          <div class="flex flex-row items-center justify-between py-2 border-b border-gray-200">
-            <div class="text-sm text-gray-500"><%= day.date %></div>
-            <div class="text-sm text-gray-500 flex items-center"></div>
-            <div class="text-sm text-gray-500"></div>
-            <div class="text-sm text-gray-500"><%= day.high_temp %>°F / <%= day.low_temp %>°F</div>
-          </div>
-        <% end %>
+  <%= render partial: "shared/error_message", locals: { error_message: @error_message } %>
+
+  <% if @error_message.blank? %>
+    <div class="flex items-center justify-center <%= 'border-4 border-red-600' if @is_cached %>">
+      <div class="flex flex-col bg-white rounded p-4 w-full max-w-lg">
+        <div class="mt-6">
+          <% @extended_forecast.each do |day| %>
+            <div class="flex flex-row items-center justify-between py-2 border-b border-gray-200">
+              <div class="text-sm text-gray-500"><%= day.date %></div>
+              <div class="text-sm text-gray-500 flex items-center"></div>
+              <div class="text-sm text-gray-500"></div>
+              <div class="text-sm text-gray-500"><%= day.high_temp %>°F / <%= day.low_temp %>°F</div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

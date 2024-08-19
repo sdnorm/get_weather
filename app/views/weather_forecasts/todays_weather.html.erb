@@ -1,1 +1,38 @@
-<%= render "weather_forecasts/current", todays_weather: @todays_weather %>
+<%= turbo_frame_tag :weather do %>
+  <%= render partial: "shared/error_message", locals: { error_message: @error_message } %>
+
+  <% if @error_message.blank? && @todays_weather.present? %>
+    <div class="flex items-center justify-center">
+      <div class="flex flex-col bg-white rounded p-4 w-full max-w-xs <%= "border-4 border-red-600" if @is_cached %>">
+        <div class="font-bold text-xl"><%= @todays_weather.location %></div>
+        <div class="text-sm text-gray-500"><%= @todays_weather.date %></div>
+        <div class="flex flex-row items-center justify-center mt-6">
+          <div class="font-medium text-6xl"><%= @todays_weather.current_temp %>°F</div>
+          <div class="flex flex-col items-center ml-6">
+            <div>Cloudy</div>
+            <div class="mt-1">
+              <span class="text-sm">
+                <i class="far fa-long-arrow-up"></i>
+              </span>
+              <span class="text-sm font-light text-gray-500">
+                <%= @todays_weather.high_temp %>°F
+              </span>
+            </div>
+            <div>
+              <span class="text-sm">
+                <i class="far fa-long-arrow-down"></i>
+              </span>
+              <span class="text-sm font-light text-gray-500">
+                <%= @todays_weather.low_temp %>°F
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= turbo_frame_tag :weather_forecast_extended do %>
+      <%= link_to "Get Extended Forecast", extended_weather_forecast_path(zip_code: @zip_code), class: "block w-full mt-4 px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75 text-center" %>
+    <% end %>
+  <% end %>
+<% end %>
