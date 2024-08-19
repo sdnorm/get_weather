@@ -2,9 +2,7 @@
   <div class="absolute inset-0 flex items-center justify-center">
     <div class="w-full max-w-md">
       <%= render "weather_forecasts/input_field" %>
-      <% if @weather_data_cached %>
-        <%= render partial: "weather_forecasts/current" %>
-      <% else %>
+      <%= turbo_frame_tag "weather" do %>
         <%= render partial: "weather_forecasts/placeholder" %>
       <% end %>
     </div>

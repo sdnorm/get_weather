@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @weather_data_cached = true
+    @weather_data_cached = false
   end
 end

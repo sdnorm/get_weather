@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "weather_forecasts/todays_weather", to: "weather_forecasts#todays_weather", as: :todays_weather_forecast
   get "weather_forecasts/extended", to: "weather_forecasts#extended", as: :extended_weather_forecast
   get "pages/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

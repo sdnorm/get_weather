@@ -1,5 +1,8 @@
 <div>
   <h1 class="font-bold text-4xl mb-4 text-center">Get weather</h1>
-  <p class="mb-4 text-center">Enter the address you want to get the weather for.</p>
-  <input type="text" placeholder="Enter address" class="border p-2 rounded w-full mb-4">
+  <p class="mb-4 text-center">Enter the zip code you want to get the weather for.</p>
+  <%= form_with url: todays_weather_forecast_path, method: :get, data: { turbo_frame: "weather" }, class: "mb-4" do |f| %>
+    <%= f.text_field :zip_code, placeholder: "Enter zip code", class: "border p-2 rounded w-full mb-2" %>
+    <%= f.submit "Get Weather", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full" %>
+  <% end %>
 </div>
