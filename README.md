@@ -8,4 +8,4 @@
 2. Click "Extneded Forecast" to see the 7 day forecast.
   - This shows you the high and low temps.
 3. You'll see a red border around cached results. 
-4. Simplecov test coverage shows 97% coverage.
+4. Simplecov test coverage shows 96.69% coverage.
