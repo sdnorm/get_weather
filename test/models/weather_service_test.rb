@@ -74,12 +74,36 @@ class WeatherServiceTest < ActiveSupport::TestCase
   end
 
   test "fetch_weather_data handles general error" do
-    mock_response = Struct.new(:success?, :code, :parsed_response).new(false, 500, { "error" => "Server error" })
+    mock_response = Struct.new(:success?, :code, :parsed_response).new(false, 500, { "message" => "Server error" })
     WeatherService.stubs(:get).returns(mock_response)
 
     service = WeatherService.new(@zip_code, "current")
     result = service.send(:fetch_weather_data)
 
     assert_equal({ error: "Server error" }, result)
+  end
+
+  test "fetch_weather_data handles unexpected error format" do
+    mock_response = Struct.new(:success?, :code, :parsed_response).new(false, 500, "Unexpected error")
+    WeatherService.stubs(:get).returns(mock_response)
+
+    service = WeatherService.new(@zip_code, "current")
+    result = service.send(:fetch_weather_data)
+
+    assert_equal({ error: "An error occurred: 500" }, result)
+  end
+
+  test "parse_current_weather handles missing data" do
+    service = WeatherService.new(@zip_code, "current")
+    result = service.send(:parse_current_weather, { "timelines" => {} })
+
+    assert_equal({ error: "Unable to retrieve weather data. Please check your zip code and try again." }, result)
+  end
+
+  test "parse_extended_forecast handles missing data" do
+    service = WeatherService.new(@zip_code, "extended")
+    result = service.send(:parse_extended_forecast, { "timelines" => {} })
+
+    assert_equal({ error: "Unable to retrieve extended forecast. Please check your zip code and try again." }, result)
   end
 end

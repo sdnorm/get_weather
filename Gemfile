@@ -60,3 +60,5 @@ group :test do
 end
 
 gem "httparty"
+
+gem 'simplecov', require: false, group: :test
