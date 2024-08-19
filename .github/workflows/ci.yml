@@ -60,12 +60,11 @@ jobs:
         image: postgres
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: weather_test
-    env:
-      POSTGRES_HOST: localhost
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libsqlite3-0 libvips
@@ -78,19 +77,6 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
-
-      - name: Check PostgreSQL connection
-        run: |
-          PGPASSWORD=${{ env.POSTGRES_PASSWORD }} psql -h localhost -U postgres -c '\l'
-
-      - name: Start PostgreSQL
-        run: |
-          sudo systemctl start postgresql.service
-          pg_isready
-
-      - name: Create test database
-        run: |
-          PGPASSWORD=${{ env.POSTGRES_PASSWORD }} psql -h localhost -U postgres -c 'CREATE DATABASE weather_test;'
 
       - name: Run tests
         env:
